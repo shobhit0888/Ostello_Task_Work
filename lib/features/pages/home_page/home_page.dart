@@ -2,15 +2,15 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'package:task_project/features/pages/home_page/bottom_card.dart';
-import 'package:task_project/features/pages/home_page/career_roadmap.dart';
 import 'package:task_project/features/pages/home_page/home_widgets/assesment_card.dart';
+import 'package:task_project/features/pages/home_page/home_widgets/bottom_card.dart';
+import 'package:task_project/features/pages/home_page/home_widgets/career_roadmap.dart';
 import 'package:task_project/features/pages/home_page/home_widgets/info_card.dart';
+import 'package:task_project/features/pages/home_page/home_widgets/market1card.dart';
 import 'package:task_project/features/pages/home_page/home_widgets/refer_earn.dart';
+import 'package:task_project/features/pages/home_page/home_widgets/refer_slider.dart';
+import 'package:task_project/features/pages/home_page/home_widgets/service_card.dart';
 import 'package:task_project/features/pages/home_page/home_widgets/user_card.dart';
-
-import 'package:task_project/features/pages/refer_slider.dart';
-import 'package:task_project/features/pages/service_card.dart';
 
 import 'package:task_project/features/widgets/coin.dart';
 
@@ -86,6 +86,37 @@ class HomePage extends StatelessWidget {
             SizedBox(height: 20),
             CarouselSlider(
                 items: [
+                  MarketCard1(),
+                  // Image.asset("images/card.png")
+                  Container(
+                    height: 135,
+                    width: 135,
+                    decoration: BoxDecoration(
+                      border:
+                          Border.all(color: Color.fromARGB(255, 205, 165, 252)),
+                      color: Color.fromARGB(255, 234, 220, 250),
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),
+                    child: Image.asset("images/card.png"),
+                  )
+                ],
+                options: CarouselOptions(
+                    aspectRatio: 9 / 16,
+                    autoPlay: true,
+                    height: 200,
+                    autoPlayCurve: Curves.fastOutSlowIn,
+                    enableInfiniteScroll: true,
+                    autoPlayAnimationDuration: Duration(milliseconds: 800),
+                    viewportFraction: 0.90)),
+            SizedBox(height: 20),
+            // Padding(
+            //   padding: const EdgeInsets.only(left: 18.0),
+            //   child: Text("Marketplace",
+            //       style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
+            // ),
+            SizedBox(height: 20),
+            CarouselSlider(
+                items: [
                   ReferSliderCard(
                     color: Color(0xff16763E),
                   ),
@@ -120,7 +151,6 @@ class HomePage extends StatelessWidget {
                     viewportFraction: 0.80)),
             SizedBox(height: 20),
             BottomCard(),
-            
             SizedBox(height: 50),
           ],
         ),
