@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:task_project/features/pages/home_page.dart';
+import 'package:task_project/features/pages/home_page/home_page.dart';
 
 class NavigationModel extends ChangeNotifier {
   int _currentIndex = 0;

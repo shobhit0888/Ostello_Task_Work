@@ -63,6 +63,40 @@ class UserCard extends StatelessWidget {
                   ],
                 ),
               ),
+              Padding(
+                padding: const EdgeInsets.only(left: 90.0),
+                child: ClipPath(
+                  clipper: CustomClipPath(),
+                  child: Container(
+                      height: 40,
+                      width: 80,
+                      decoration: BoxDecoration(
+                        color: Colors.deepPurpleAccent,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.only(right: 10.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Image.asset(
+                              "images/coin.png",
+                              height: 20,
+                              width: 20,
+                            ),
+                            Text(
+                              "3500",
+                              style: TextStyle(
+                                color: Colors.white,
+                                // fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                      )),
+                ),
+              ),
               CircleAvatar(
                 radius: 25,
                 backgroundImage: AssetImage("images/img.png"),
@@ -73,4 +107,22 @@ class UserCard extends StatelessWidget {
       ),
     );
   }
+}
+
+class CustomClipPath extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    // make the curve on the right side
+    Path path = Path();
+    path.lineTo(size.width, 0);
+    path.quadraticBezierTo(size.width * 0.75, size.height * 0.5, size.width,
+        size.height); // Add this line
+    path.lineTo(size.width, size.height);
+    path.lineTo(0, size.height);
+    path.lineTo(0, 0);
+    return path;
+  }
+
+  @override
+  bool shouldReclip(covariant CustomClipper<Path> oldClipper) => true;
 }
